@@ -29,7 +29,6 @@ class LoginNeedVerification extends Notification
     public function via(object $notifiable): array
     {
         return [TwilioChannel::class];
-
     }
 
     public function toTwilio($notifiable)
@@ -37,11 +36,11 @@ class LoginNeedVerification extends Notification
         $loginCode = rand(111111, 999999);
 
         $notifiable->update([
-            'login_code'=> $loginCode
+            'login_code' => $loginCode
         ]);
 
         return (new TwilioSmsMessage())
-        ->content("Your login code is {$loginCode}, Don't share this with anyone! ");
+            ->content("Your Andrewber login code is {$loginCode}, don't share this with anyone!");
     }
 
     /**
